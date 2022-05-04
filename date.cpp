@@ -13,7 +13,7 @@ m_year{year}, m_month(month), m_day{day}
 
 std::ostream& operator<<(std::ostream& out, const date& dt)
 {
-    return out << dt.m_year << "-" << dt.m_month << "-" << dt.m_day;
+    return out << dt.year() << "-" << dt.month() << "-" << dt.day();
 }
 
 std::istream& operator>>(std::istream& in, date& dt)

@@ -25,10 +25,11 @@ public:
 
     //input and output operators overloading
     friend std::istream &operator>>(std::istream&, date&);
-    friend std::ostream &operator<<(std::ostream&, const date&);
 
     //operator=
     date &operator=(const date &);
 };
+
+std::ostream &operator<<(std::ostream&, const date&);
 
 #endif
