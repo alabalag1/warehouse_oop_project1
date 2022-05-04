@@ -23,13 +23,14 @@ public:
     int month() const { return m_month; };
     int day() const { return m_day; };
 
-    //input and output operators overloading
+    //input operator overload
     friend std::istream &operator>>(std::istream&, date&);
 
-    //operator=
+    //operator= overload
     date &operator=(const date &);
 };
 
+//output operator overload
 std::ostream &operator<<(std::ostream&, const date&);
 
 #endif
