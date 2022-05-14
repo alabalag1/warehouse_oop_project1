@@ -6,22 +6,22 @@
 class date
 {
 private:
-    int m_year;
-    int m_month;
-    int m_day;
+    unsigned m_year;
+    unsigned m_month;
+    unsigned m_day;
 
 public:
     //default constructor
     date();
     //constructor with 3 parameters
-    date(int year, int month, int day);
+    date(unsigned year, unsigned month, unsigned day);
     //destructor
     ~date();
     
     //selectors
-    int year() const { return m_year; };
-    int month() const { return m_month; };
-    int day() const { return m_day; };
+    unsigned year() const { return m_year; };
+    unsigned month() const { return m_month; };
+    unsigned day() const { return m_day; };
 
     //input operator overload
     friend std::istream &operator>>(std::istream&, date&);

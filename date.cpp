@@ -4,16 +4,19 @@
 
 date::date() :
 m_year{0}, m_month{0}, m_day{0}
-{}
+{
+}
 
-date::date(int year, int month, int day) :
+date::date(unsigned year, unsigned month, unsigned day) :
 m_year{year}, m_month(month), m_day{day}
-{}
+{
+}
 
 
 std::ostream& operator<<(std::ostream& out, const date& dt)
 {
-    return out << dt.year() << "-" << dt.month() << "-" << dt.day();
+    char c{'-'};
+    return out << dt.year() << c << dt.month() << c << dt.day();
 }
 
 std::istream& operator>>(std::istream& in, date& dt)

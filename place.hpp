@@ -11,13 +11,25 @@ private:
     unsigned m_number;
 
 public:
-    //selectors
+    //Default constructor
+    place();
+
+    //constructor with 3 parameters
+    place(unsigned section, unsigned shelf, unsigned number);
+
+    //destructor
+    ~place();
+
+    // selectors
     unsigned section() const { return m_section; };
     unsigned shelf() const { return m_shelf; };
     unsigned number() const { return m_number; };
 
     //operator=
     place &operator=(const place &);
+
+    //operator>>
+    std::istream &operator>>(std::istream &);
 };
 
 //operator<<

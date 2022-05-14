@@ -52,3 +52,19 @@ void warehouse::push_back(Product other)
     }
     m_products[m_size++] = other;
 }
+
+void warehouse::print() const
+{
+    if(m_size == 0)
+    {
+        std::cout << "Empty\n";
+        return;
+    }
+
+    for (size_t i{0}; i < m_size; i++)
+    {
+        std::cout << m_products[i] << '\n';
+    }
+    std::cout << '\n';
+}
+
