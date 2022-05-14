@@ -2,11 +2,11 @@
 
 #include<iostream>
 
-Warehouse::Warehouse() : 
+Product::Product() : 
 m_name{nullptr}, m_expire{}, m_entry{}, m_manufacter{nullptr}, m_amount{0}, m_location{}, m_comment{nullptr}
 {}
 
-Warehouse::Warehouse(char* name, date expire, date entry, char *manufacter, unsigned amount, place location, char* comment):
+Product::Product(char* name, date expire, date entry, char *manufacter, unsigned amount, place location, char* comment):
     m_amount{amount}, m_location{location}
 {
     strcpy(m_name, name);
@@ -16,9 +16,14 @@ Warehouse::Warehouse(char* name, date expire, date entry, char *manufacter, unsi
     m_entry = entry;
 }
 
-Warehouse::~Warehouse()
+Product::~Product()
 {
     delete[] m_name;
     delete[] m_manufacter;
     delete[] m_comment;
+}
+
+void Product::read()
+{
+    
 }
