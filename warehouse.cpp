@@ -23,7 +23,11 @@ Product::~Product()
     delete[] m_comment;
 }
 
-void Product::read()
+/* std::istream& operator>>(std::istream& is, Product& product) {
+    return (is >> product.m_amount >> product.m_expire >> product.m_entry >> product.m_location
+} */
+
+void Product::print()
 {
-    
+    std::cout << m_name << m_expire << m_entry << m_manufacter << m_amount << m_location << m_comment;
 }

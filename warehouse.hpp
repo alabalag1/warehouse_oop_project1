@@ -7,13 +7,6 @@
 #include<cstring>
 
 
-struct place
-{
-    unsigned section;
-    unsigned shelf;
-    unsigned number;
-};
-
 class Product
 {
 private:
@@ -35,8 +28,11 @@ public:
     //Destructor
     ~Product();
 
-    // Read all available products
-    void read();
+    // Print all available products
+    void print();
+
+    //Input, operator>>
+    friend std::istream& operator>>(std::istream& is, Product&);
 };
 
 
