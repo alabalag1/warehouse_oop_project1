@@ -14,7 +14,7 @@ struct place
     unsigned number;
 };
 
-class Warehouse
+class Product
 {
 private:
     char *m_name;
@@ -27,14 +27,17 @@ private:
 
 public:
     //Default constructor
-    Warehouse();
+    Product();
 
     //Constructor with all parameters
-    Warehouse(char *name, date expire, date entry, char *manufacter, unsigned amount, place location, char *comment);
+    Product(char *name, date expire, date entry, char *manufacter, unsigned amount, place location, char *comment);
     
     //Destructor
-    ~Warehouse();
-    
+    ~Product();
+
+    // Read all available products
+    void read();
 };
+
 
 #endif

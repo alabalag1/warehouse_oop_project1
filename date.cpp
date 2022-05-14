@@ -29,3 +29,7 @@ date& date::operator=(const date &other)
     m_month = other.m_month;
     m_day = other.m_day;
 }
+bool operator!=(const date &lhs, const date &rhs)
+{
+    return ((lhs.year() != rhs.year()) && (lhs.month() != rhs.month()) && (lhs.day() != rhs.day()));
+}
