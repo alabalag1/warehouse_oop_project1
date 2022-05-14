@@ -24,9 +24,6 @@ Product::~Product()
     delete[] m_comment;
 }
 
-/* std::istream& operator>>(std::istream& is, Product& product) {
-    return (is >> product.m_amount >> product.m_expire >> product.m_entry >> product.m_location
-} */
 
 Product& Product::operator=(const Product &other)
 {
@@ -42,4 +39,11 @@ Product& Product::operator=(const Product &other)
 void Product::print()
 {
     std::cout << m_name << m_expire << m_entry << m_manufacter << m_amount << m_location << m_comment;
+}
+
+std::ostream &operator<<(std ::ostream &out, const Product &p)
+{
+    char c{' '};
+    return out << p.m_name << c << p.m_expire << c << p.m_entry << c << p.m_manufacter << c << p.m_amount << c << p.m_location << c << p.m_comment;
+    //return out << p.m_name;
 }
