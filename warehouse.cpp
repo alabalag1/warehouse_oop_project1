@@ -2,32 +2,53 @@
 
 #include<iostream>
 
-Product::Product() : 
-m_name{nullptr}, m_expire{}, m_entry{}, m_manufacter{nullptr}, m_amount{0}, m_location{}, m_comment{nullptr}
-{}
 
-Product::Product(char* name, date expire, date entry, char *manufacter, unsigned amount, place location, char* comment):
-    m_amount{amount}, m_location{location}
-{
-    strcpy(m_name, name);
-    strcpy(m_manufacter, manufacter);
-    strcpy(m_comment, comment);
-    m_expire = expire;
-    m_entry = entry;
+warehouse::warehouse(size_t capacity):
+    m_products{new Product[capacity]}, m_size{0}, m_capacity{capacity}
+{ 
 }
 
-Product::~Product()
+
+warehouse::~warehouse()
 {
-    delete[] m_name;
-    delete[] m_manufacter;
-    delete[] m_comment;
+    delete[] m_products;
 }
 
-/* std::istream& operator>>(std::istream& is, Product& product) {
-    return (is >> product.m_amount >> product.m_expire >> product.m_entry >> product.m_location
-} */
-
-void Product::print()
+warehouse::warehouse(const warehouse& other):
+m_products{new Product[other.m_capacity]}, m_size{other.m_size}, m_capacity{other.m_capacity}
 {
-    std::cout << m_name << m_expire << m_entry << m_manufacter << m_amount << m_location << m_comment;
+    std::copy(other.m_products, other.m_products + other.m_size, m_products);
+}
+
+warehouse& warehouse::operator=(const warehouse& other)
+{
+    warehouse copy{other};
+    swap(copy);
+    return *this;
+}
+
+void warehouse::swap(warehouse& other)
+{
+    using std::swap;
+    swap(m_products, other.m_products);
+    swap(m_capacity, other.m_capacity);
+    swap(m_size, other.m_size);
+}
+
+void warehouse::expand(size_t capacity)
+{
+    m_capacity = capacity;
+    Product *temp{new Product[m_capacity]};
+    std::copy(m_products, m_products + m_size, temp);
+    delete[] m_products;
+    m_products = temp;
+}
+
+void warehouse::push_back(Product other)
+{
+    if(m_size == m_capacity)
+    {
+        expand(m_capacity * 2);
+    }
+    m_products[m_size++] = other;
 }

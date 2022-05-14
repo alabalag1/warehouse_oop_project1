@@ -1,39 +1,42 @@
 #ifndef __WAREHOUSE_HPP
 #define __WAREHOUSE_HPP
 
-#include"date.hpp"
+#include "product.hpp"
 
 #include<iostream>
-#include<cstring>
 
-
-class Product
+class warehouse
 {
 private:
-    char *m_name;
-    date m_expire;
-    date m_entry;
-    char *m_manufacter;
-    unsigned m_amount;
-    place m_location;
-    char *m_comment;
+    Product* m_products{nullptr};
+    size_t m_size{0};
+    size_t m_capacity{0};
+    void expand(size_t);
 
 public:
-    //Default constructor
-    Product();
+    //Default Constructor
+    warehouse() = default;
 
-    //Constructor with all parameters
-    Product(char *name, date expire, date entry, char *manufacter, unsigned amount, place location, char *comment);
-    
+    //Constructor
+    explicit warehouse(size_t);
+
+    //Copy Constructor
+    warehouse(const warehouse&);
+
+    //operator=
+    warehouse &operator=(const warehouse &);
+
     //Destructor
-    ~Product();
+    ~warehouse();
 
-    // Print all available products
-    void print();
+    //Print
+    void print() const;
 
-    //Input, operator>>
-    friend std::istream& operator>>(std::istream& is, Product&);
+    //Push to back
+    void push_back(Product);
+
+    //Swap
+    void swap(warehouse&);
 };
-
 
 #endif

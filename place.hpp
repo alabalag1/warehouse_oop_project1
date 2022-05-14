@@ -3,12 +3,24 @@
 
 #include<iostream>
 
-struct place
+class place
 {
-    unsigned section;
-    unsigned shelf;
-    unsigned number;
+private:
+    unsigned m_section;
+    unsigned m_shelf;
+    unsigned m_number;
+
+public:
+    //selectors
+    unsigned section() const { return m_section; };
+    unsigned shelf() const { return m_shelf; };
+    unsigned number() const { return m_number; };
+
+    //operator=
+    place &operator=(const place &);
 };
-std::ostream &operator<<(std::ostream &, const place);
+
+//operator<<
+std::ostream &operator<<(std::ostream &, const place&);
 
 #endif
