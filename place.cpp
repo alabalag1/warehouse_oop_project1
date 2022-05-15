@@ -31,3 +31,13 @@ std::istream& place::operator>>(std::istream &in)
     char c{'-'};
     return in >> m_section >> c >> m_shelf >> c >> m_number;
 }
+
+bool operator!=(const place &lhs,const place &rhs)
+{
+    return ((lhs.number() != rhs.number()) || (lhs.section() != rhs.section()) || (lhs.shelf() != rhs.shelf()));
+}
+
+bool operator==(const place &lhs, const place &rhs)
+{
+    return !(lhs != rhs);
+}

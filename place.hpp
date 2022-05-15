@@ -30,9 +30,16 @@ public:
 
     //operator>>
     std::istream &operator>>(std::istream &);
+
 };
 
 //operator<<
 std::ostream &operator<<(std::ostream &, const place&);
+
+//operator!=
+bool operator!=(const place &,const place &);
+
+//operator==
+bool operator==(const place &, const place &);
 
 #endif
