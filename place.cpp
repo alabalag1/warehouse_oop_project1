@@ -3,8 +3,8 @@
 #include<iostream>
 
 
-place::place() :
-m_section{0}, m_shelf{0}, m_number{0}
+
+place::place() : m_section{0}, m_shelf{0}, m_number{0}
 {
 }
 

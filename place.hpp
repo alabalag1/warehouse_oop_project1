@@ -3,6 +3,8 @@
 
 #include<iostream>
 
+const unsigned MAX_SPACE{25};
+
 class place
 {
 private:
@@ -17,7 +19,7 @@ public:
     //constructor with 3 parameters
     place(unsigned section, unsigned shelf, unsigned number);
 
-    //destructor
+    // destructor
     ~place();
 
     // selectors
@@ -25,6 +27,10 @@ public:
     unsigned shelf() const { return m_shelf; };
     unsigned number() const { return m_number; };
 
+    //mutators
+    unsigned setSection(unsigned section) { m_section = section; };
+    unsigned setShelf(unsigned shelf) { m_shelf = shelf; };
+    unsigned setNumber(unsigned number) { m_number = number; };
     //operator=
     place &operator=(const place &);
 

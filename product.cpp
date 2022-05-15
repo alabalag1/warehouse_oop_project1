@@ -89,3 +89,14 @@ void Product::setComment(char* comment)
     m_comment = new char[strlen(comment) + 1];
     strcpy(m_comment, comment);
 }
+
+Product readProduct(std::istream &in)
+{
+    Product temp;
+    in.read(reinterpret_cast<char *>(&temp), sizeof(Product));
+    return temp;
+}
+std::ostream& writeProduct(std::ostream &out,const Product & p)
+{
+    return out.write(reinterpret_cast<const char *>(&p), sizeof(Product));
+}

@@ -37,6 +37,12 @@ public:
 
     //Swap
     void swap(warehouse&);
+
+    //Add product in dialogue mode
+    void add();
+
+    //Eject product in dialogue mode
+    void eject();
 };
 
 #endif
