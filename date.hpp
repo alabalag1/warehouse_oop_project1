@@ -15,13 +15,20 @@ public:
     date();
     //constructor with 3 parameters
     date(unsigned year, unsigned month, unsigned day);
-    //destructor
+    //copy constructor
+    date(const date &);
+    // destructor
     ~date();
     
     //selectors
     unsigned year() const { return m_year; };
     unsigned month() const { return m_month; };
     unsigned day() const { return m_day; };
+
+    //mutators
+    unsigned setYear(unsigned year) { m_year = year; };
+    unsigned setMonth(unsigned month) { m_month = month; };
+    unsigned setDay(unsigned day) { m_day = day; };
 
     //input operator overload
     friend std::istream &operator>>(std::istream&, date&);
@@ -35,5 +42,8 @@ std::ostream &operator<<(std::ostream&, const date&);
 
 //bool operator!=
 bool operator!=(const date &, const date &);
+
+//operator ==
+bool operator==(const date &, const date &);
 
 #endif

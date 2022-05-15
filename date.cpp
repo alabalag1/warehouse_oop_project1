@@ -12,6 +12,11 @@ m_year{year}, m_month(month), m_day{day}
 {
 }
 
+date::date(const date &other):
+m_year{other.m_year}, m_month{other.m_month},m_day{other.m_day}
+{
+}
+
 
 std::ostream& operator<<(std::ostream& out, const date& dt)
 {
@@ -34,5 +39,10 @@ date& date::operator=(const date &other)
 }
 bool operator!=(const date &lhs, const date &rhs)
 {
-    return ((lhs.year() != rhs.year()) && (lhs.month() != rhs.month()) && (lhs.day() != rhs.day()));
+    return ((lhs.year() != rhs.year()) || (lhs.month() != rhs.month()) || (lhs.day() != rhs.day()));
+}
+
+bool operator==(const date &lhs, const date &rhs)
+{
+    return !(lhs != rhs);
 }
