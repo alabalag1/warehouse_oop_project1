@@ -40,7 +40,13 @@ public:
 //output operator overload
 std::ostream &operator<<(std::ostream&, const date&);
 
-//bool operator!=
+//operator<
+bool operator<(const date &, const date &);
+
+//operator<=
+bool operator<=(const date &, const date &);
+
+//operator!=
 bool operator!=(const date &, const date &);
 
 //operator ==

@@ -46,3 +46,39 @@ bool operator==(const date &lhs, const date &rhs)
 {
     return !(lhs != rhs);
 }
+
+bool operator<(const date &lhs, const date &rhs)
+{
+    if(lhs.year() < rhs.year())
+        return true;
+        else if(lhs.year() == rhs.year())
+        {
+            if(lhs.month() < rhs.month())
+                return true;
+            else if(lhs.month() == rhs.month())
+            {
+                if(lhs.day() < rhs.day())
+                    return true;
+            }
+        }
+        return false;
+}
+
+bool operator<=(const date &lhs, const date &rhs)
+{
+    if(lhs.year() == rhs.year() && lhs.month() == rhs.month() && lhs.day() == rhs.day())
+        return true;
+    if (lhs.year() < rhs.year())
+        return true;
+        else if(lhs.year() == rhs.year())
+        {
+            if(lhs.month() < rhs.month())
+                return true;
+            else if(lhs.month() == rhs.month())
+            {
+                if(lhs.day() < rhs.day())
+                    return true;
+            }
+        }
+    return false;
+}
