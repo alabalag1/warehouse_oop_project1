@@ -58,6 +58,9 @@ public:
     //operator<<
     friend std::ostream &operator<<(std ::ostream &, const Product &);
 
+    //operator>>
+    friend std::istream &operator>>(std::istream &, Product &);
+
     Product readProduct(std::istream &);
     std::ostream& writeProduct(std::ostream &,const Product&);
 };

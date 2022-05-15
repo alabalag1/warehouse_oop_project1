@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-g++"
+	BuildStamp="20220515-1529-Experimental"
+	Name="pop-os"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="11.2.0"
+	OSName="Linux"
+	Hostname="pop-os"
+	OSRelease="5.17.5-76051705-generic"
+	OSVersion="#202204271406~1651504840~22.04~63e51bd SMP PREEMPT Mon May 2 15:"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="141"
+	ProcessorCacheSize="12288"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="12695"
+	TotalPhysicalMemory="7689"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2700"
+	>
+	<Testing>
+		<StartDateTime>May 15 18:29 EEST</StartDateTime>
+		<StartTestTime>1652628555</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 15 18:29 EEST</EndDateTime>
+		<EndTestTime>1652628555</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

@@ -1,4 +1,8 @@
+#include"product.hpp"
+#include"date.hpp"
 #include"warehouse.hpp"
+#include"place.hpp"
+
 
 #include<iostream>
 #include<cstring>
@@ -10,8 +14,11 @@ m_name{nullptr}, m_expire{}, m_entry{}, m_manufacter{nullptr}, m_amount{0}, m_lo
 Product::Product(char* name, date expire, date entry, char *manufacter, unsigned amount, place location, char* comment):
     m_amount{amount}, m_location{location}
 {
+    m_name = new char[MAX_NAME_LENGTH];
     strcpy(m_name, name);
+    m_manufacter = new char[MAX_NAME_LENGTH];
     strcpy(m_manufacter, manufacter);
+    m_comment = new char[MAX_COMMENT_LENGTH];
     strcpy(m_comment, comment);
     m_expire = expire;
     m_entry = entry;
@@ -27,13 +34,17 @@ Product::~Product()
 
 Product& Product::operator=(const Product &other)
 {
-    m_amount = other.m_amount;
-    m_location = other.m_location;
-    m_entry = other.m_entry;
-    m_expire = other.m_expire;
-    strcpy(m_name, other.m_name);
-    strcpy(m_comment, other.m_comment);
-    strcpy(m_manufacter, other.m_manufacter);
+    if(this != &other)
+    {
+        m_amount = other.m_amount;
+        m_location = other.m_location;
+        m_entry = other.m_entry;
+        m_expire = other.m_expire;
+        setName(other.m_name);
+        setManufacter(other.m_manufacter);
+        setComment(other.m_comment);
+    }
+    return *this;
 }
 
 void Product::print()
@@ -48,6 +59,11 @@ std::ostream &operator<<(std ::ostream &out, const Product &p)
     //return out << p.m_name;
 }
 
+std::istream &operator>>(std::istream &in, Product &p)
+{
+    char c{' '};
+    return in >> p.m_name >> c >> p.m_expire >> c >> p.m_entry >> c >> p.m_manufacter >> c >> p.m_amount >> p.m_location >> c >> p.m_comment;
+}
 
 void Product::setName(char* name)
 {
@@ -90,13 +106,4 @@ void Product::setComment(char* comment)
     strcpy(m_comment, comment);
 }
 
-Product readProduct(std::istream &in)
-{
-    Product temp;
-    in.read(reinterpret_cast<char *>(&temp), sizeof(Product));
-    return temp;
-}
-std::ostream& writeProduct(std::ostream &out,const Product & p)
-{
-    return out.write(reinterpret_cast<const char *>(&p), sizeof(Product));
-}
+

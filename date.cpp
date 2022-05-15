@@ -33,9 +33,13 @@ std::istream& operator>>(std::istream& in, date& dt)
 
 date& date::operator=(const date &other)
 {
-    m_year = other.m_year;
-    m_month = other.m_month;
-    m_day = other.m_day;
+    if(*this != other)
+    {
+        m_year = other.m_year;
+        m_month = other.m_month;
+        m_day = other.m_day;
+    }
+    return *this;
 }
 bool operator!=(const date &lhs, const date &rhs)
 {

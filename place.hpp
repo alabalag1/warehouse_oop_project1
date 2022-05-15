@@ -19,8 +19,6 @@ public:
     //constructor with 3 parameters
     place(unsigned section, unsigned shelf, unsigned number);
 
-    // destructor
-    ~place();
 
     // selectors
     unsigned section() const { return m_section; };
@@ -28,14 +26,15 @@ public:
     unsigned number() const { return m_number; };
 
     //mutators
-    unsigned setSection(unsigned section) { m_section = section; };
-    unsigned setShelf(unsigned shelf) { m_shelf = shelf; };
-    unsigned setNumber(unsigned number) { m_number = number; };
+    void setSection(unsigned section) { m_section = section; };
+    void setShelf(unsigned shelf) { m_shelf = shelf; };
+    void setNumber(unsigned number) { m_number = number; };
+
     //operator=
     place &operator=(const place &);
 
     //operator>>
-    std::istream &operator>>(std::istream &);
+    friend std::istream &operator>>(std::istream &, place&);
 
 };
 

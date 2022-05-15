@@ -2,11 +2,9 @@
 
 #include<iostream>
 
-const unsigned MAX_NAME_LENGTH{100};
-const unsigned MAX_COMMENT_LENGTH{250};
 
 warehouse::warehouse(size_t capacity):
-    m_products{new Product[capacity]}, m_size{0}, m_capacity{capacity}
+m_products{new Product[capacity]}, m_size{0}, m_capacity{capacity}
 { 
 }
 
@@ -46,7 +44,7 @@ void warehouse::expand(size_t capacity)
     m_products = temp;
 }
 
-void warehouse::push_back(Product other)
+void warehouse::push_back(Product& other)
 {
     if(m_size == m_capacity)
     {
@@ -149,6 +147,9 @@ void warehouse::add()
 
     Product temp(name, expire, entry, manufacter, amount, location, comment);
     push_back(temp);
+    delete[] name;
+    delete[] comment;
+    delete[] manufacter;
 }
 
 void warehouse::eject()
@@ -209,3 +210,16 @@ void warehouse::eject()
     }
     
 }
+
+/* std::ostream& writeWarehouse(std::ostream &out,const warehouse &w)
+{
+    return out.write(reinterpret_cast<const char *>(&w), sizeof(warehouse));
+} */
+
+/* void Write(std::ostream& out)
+{
+    for (size_t i = 0; i < m_size; i++)
+    {
+        m_products[i].writeProduct(out, m_products[i]);
+    }
+} */

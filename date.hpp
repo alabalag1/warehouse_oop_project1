@@ -17,8 +17,6 @@ public:
     date(unsigned year, unsigned month, unsigned day);
     //copy constructor
     date(const date &);
-    // destructor
-    ~date();
     
     //selectors
     unsigned year() const { return m_year; };
@@ -26,9 +24,9 @@ public:
     unsigned day() const { return m_day; };
 
     //mutators
-    unsigned setYear(unsigned year) { m_year = year; };
-    unsigned setMonth(unsigned month) { m_month = month; };
-    unsigned setDay(unsigned day) { m_day = day; };
+    void setYear(unsigned year) { m_year = year; };
+    void setMonth(unsigned month) { m_month = month; };
+    void setDay(unsigned day) { m_day = day; };
 
     //input operator overload
     friend std::istream &operator>>(std::istream&, date&);

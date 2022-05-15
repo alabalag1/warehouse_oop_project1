@@ -2,8 +2,13 @@
 #define __WAREHOUSE_HPP
 
 #include "product.hpp"
+#include "date.hpp"
+#include "place.hpp"
 
 #include<iostream>
+
+const unsigned MAX_NAME_LENGTH{100};
+const unsigned MAX_COMMENT_LENGTH{250};
 
 class warehouse
 {
@@ -32,8 +37,12 @@ public:
     //Print
     void print() const;
 
+    //Selectors
+    Product *products() { return m_products; };
+    size_t size() { return m_size; };
+
     //Push to back
-    void push_back(Product);
+    void push_back(Product&);
 
     //Swap
     void swap(warehouse&);
@@ -43,6 +52,11 @@ public:
 
     //Eject product in dialogue mode
     void eject();
+
+    //Write
+    //std::ostream &writeWarehouse(std::ostream &, const warehouse &);
+    void Write(std::ostream&);
+
 };
 
 #endif

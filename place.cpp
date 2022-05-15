@@ -24,12 +24,13 @@ place& place::operator=(const place &other)
     m_number = other.m_number;
     m_shelf = other.m_shelf;
     m_section = other.m_section;
+    return *this;
 }
 
-std::istream& place::operator>>(std::istream &in)
+std::istream& operator>>(std::istream &in, place& loc)
 {
     char c{'-'};
-    return in >> m_section >> c >> m_shelf >> c >> m_number;
+    return in >> loc.m_section >> c >>  loc.m_shelf >> c >>  loc.m_number;
 }
 
 bool operator!=(const place &lhs,const place &rhs)
