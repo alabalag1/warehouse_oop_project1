@@ -7,13 +7,12 @@
 
 #include<iostream>
 
-const unsigned MAX_NAME_LENGTH{100};
-const unsigned MAX_COMMENT_LENGTH{250};
+
 
 class warehouse
 {
 private:
-    Product* m_products{nullptr};
+    Product* m_products{};
     size_t m_size{0};
     size_t m_capacity{0};
     void expand(size_t);
@@ -57,6 +56,7 @@ public:
     //std::ostream &writeWarehouse(std::ostream &, const warehouse &);
     void Write(std::ostream&);
 
+    warehouse &readProducts(std::istream &in);
 };
 
 #endif

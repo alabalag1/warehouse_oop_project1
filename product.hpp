@@ -7,16 +7,19 @@
 #include <iostream>
 #include <cstring>
 
+const unsigned MAX_NAME_LENGTH{100};
+const unsigned MAX_COMMENT_LENGTH{250};
+
 class Product
 {
 private:
-    char *m_name;
+    char m_name[MAX_NAME_LENGTH];
     date m_expire;
     date m_entry;
-    char *m_manufacter;
+    char m_manufacter[MAX_NAME_LENGTH];
     unsigned m_amount;
     place m_location;
-    char *m_comment;
+    char m_comment[MAX_COMMENT_LENGTH];
 
 public:
     // Default constructor
@@ -38,31 +41,36 @@ public:
     //friend std::istream &operator>>(std::istream &is, Product &);
 
     //Selectors
-    char* name() { return m_name; };
-    date expire() { return m_expire; };
-    date entry() { return m_entry; };
-    char *manufacter() { return m_manufacter; };
-    unsigned amount() { return m_amount; };
-    place location() { return m_location; };
-    char *comment() { return m_comment; };
+    char const* name() const { return m_name; };
+    date expire() const { return m_expire; };
+    date entry() const { return m_entry; };
+    char const* manufacter() const { return m_manufacter; };
+    unsigned amount() const { return m_amount; };
+    place location() const { return m_location; };
+    char const* comment() const { return m_comment; };
 
     //Mutators
-    void setName(char*);
+    void setName(char const*);
     void setExpire(date);
     void setEntry(date);
-    void setManufacter(char*);
+    void setManufacter(char const*);
     void setAmount(unsigned);
     void setLocation(place);
-    void setComment(char*);
+    void setComment(char const*);
     
+    //swap
+    friend void SwapProducts(Product &, Product &);
+
     //operator<<
     friend std::ostream &operator<<(std ::ostream &, const Product &);
 
     //operator>>
-    friend std::istream &operator>>(std::istream &, Product &);
+    //friend std::istream &operator>>(std::istream &, Product &);
 
-    Product readProduct(std::istream &);
-    std::ostream& writeProduct(std::ostream &,const Product&);
+    void write(std::fstream &) const;
+    void read(std::fstream &);
 };
+
+Product readProduct(std::istream &);
 
 #endif

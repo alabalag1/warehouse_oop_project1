@@ -6,19 +6,17 @@
 
 #include<iostream>
 #include<cstring>
+#include<fstream>
 
 Product::Product() : 
-m_name{nullptr}, m_expire{}, m_entry{}, m_manufacter{nullptr}, m_amount{0}, m_location{}, m_comment{nullptr}
+m_name{""}, m_expire{}, m_entry{}, m_manufacter{""}, m_amount{0}, m_location{}, m_comment{""}
 {}
 
 Product::Product(char* name, date expire, date entry, char *manufacter, unsigned amount, place location, char* comment):
     m_amount{amount}, m_location{location}
 {
-    m_name = new char[MAX_NAME_LENGTH];
     strcpy(m_name, name);
-    m_manufacter = new char[MAX_NAME_LENGTH];
     strcpy(m_manufacter, manufacter);
-    m_comment = new char[MAX_COMMENT_LENGTH];
     strcpy(m_comment, comment);
     m_expire = expire;
     m_entry = entry;
@@ -26,9 +24,6 @@ Product::Product(char* name, date expire, date entry, char *manufacter, unsigned
 
 Product::~Product()
 {
-    delete[] m_name;
-    delete[] m_manufacter;
-    delete[] m_comment;
 }
 
 
@@ -49,7 +44,8 @@ Product& Product::operator=(const Product &other)
 
 void Product::print()
 {
-    std::cout << m_name << m_expire << m_entry << m_manufacter << m_amount << m_location << m_comment;
+    char c{' '};
+    std::cout << m_name << c << m_expire << c << m_entry << c << m_manufacter << c << m_amount << c << m_location << c << m_comment;
 }
 
 std::ostream &operator<<(std ::ostream &out, const Product &p)
@@ -59,16 +55,24 @@ std::ostream &operator<<(std ::ostream &out, const Product &p)
     //return out << p.m_name;
 }
 
-std::istream &operator>>(std::istream &in, Product &p)
+/* std::istream &operator>>(std::istream &in, Product &p)
 {
-    char c{' '};
-    return in >> p.m_name >> c >> p.m_expire >> c >> p.m_entry >> c >> p.m_manufacter >> c >> p.m_amount >> p.m_location >> c >> p.m_comment;
+    char c{'\n'};
+    //return (in >> p.m_name >> c >> p.m_expire >> c >> p.m_entry >> c >> p.m_manufacter >> c >> p.m_amount >> p.m_location >> c).ignore().getline(p.m_comment,MAX_COMMENT_LENGTH);
+    in.clear();
+    in.ignore();
+    in.getline(p.m_name, MAX_NAME_LENGTH,'\n');
+    in >> c >> p.m_expire >> c >> p.m_entry;
+    in.ignore(10000,c);
+    in.getline(p.m_manufacter, MAX_NAME_LENGTH);
+    in >> c >> p.m_amount;
+    in.ignore(10000, c);
+    in.getline(p.m_comment, MAX_COMMENT_LENGTH);
+    return in;
 }
-
-void Product::setName(char* name)
+ */
+void Product::setName(char const* name)
 {
-    delete[] m_name;
-    m_name = new char[strlen(name) + 1];
     strcpy(m_name, name);
 }
 
@@ -82,10 +86,9 @@ void Product::setEntry(date entry)
     m_entry = entry;
 }
 
-void Product::setManufacter(char *manufacter)
+void Product::setManufacter(char const* manufacter)
 {
-    delete[] m_manufacter;
-    m_manufacter = new char[strlen(manufacter) + 1];
+
     strcpy(m_manufacter, manufacter);
 }
 
@@ -99,11 +102,36 @@ void Product::setLocation(place location)
     m_location = location;
 }
 
-void Product::setComment(char* comment)
+void Product::setComment(char const* comment)
 {
-    delete[] m_comment;
-    m_comment = new char[strlen(comment) + 1];
     strcpy(m_comment, comment);
 }
 
+void Product::write(std::fstream& fs) const 
+{
+    fs.write((char const*)this, sizeof(Product));
+}
 
+void Product::read(std::fstream& fs)
+{
+    fs.read((char*)this, sizeof(Product));
+}
+
+void SwapProducts(Product &lhs, Product &rhs)
+{
+    using std::swap;
+    swap(lhs.m_name, rhs.m_name);
+    swap(lhs.m_entry, rhs.m_entry);
+    swap(lhs.m_expire, rhs.m_expire);
+    swap(lhs.m_manufacter,rhs.m_manufacter);
+    swap(lhs.m_location, rhs.m_location);
+    swap(lhs.m_amount, rhs.m_amount);
+    swap(lhs.m_comment, rhs.m_comment);
+}
+
+Product readProduct(std::istream& in)
+{
+    Product temp;
+    in.read(reinterpret_cast<char *>(&temp), sizeof(Product));
+    return temp;
+}

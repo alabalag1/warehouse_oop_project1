@@ -70,13 +70,15 @@ void warehouse::print() const
 
 void warehouse::add()
 {
-    char *name = new char[MAX_NAME_LENGTH];
+    char name[MAX_NAME_LENGTH];
     date expire;
     date entry;
-    char *manufacter = new char[MAX_NAME_LENGTH];
+    char manufacter[MAX_NAME_LENGTH];
     unsigned amount;
     place location;
-    char *comment = new char[MAX_COMMENT_LENGTH];
+    char comment[MAX_COMMENT_LENGTH];
+    std::cin.clear();
+    std::cin.ignore(10000,'\n');
     std::cout << "Enter name of product: ";
     std::cin.getline(name, MAX_NAME_LENGTH);
     std::cout << "Enter expiry date in YYYY-MM-DD format: ";
@@ -93,7 +95,8 @@ void warehouse::add()
     std::cin.clear();
     std::cin.ignore(10000,'\n');
     std::cin.getline(comment, MAX_COMMENT_LENGTH);
-    
+    std::cin.clear();
+
     for (size_t i = 0; i < m_size; i++)
     {
         if(((strcmp(m_products[i].name(),name) == 0)) && (m_products[i].expire() == expire))
@@ -147,25 +150,25 @@ void warehouse::add()
 
     Product temp(name, expire, entry, manufacter, amount, location, comment);
     push_back(temp);
-    delete[] name;
-    delete[] comment;
-    delete[] manufacter;
 }
 
 void warehouse::eject()
 {
     unsigned count{0};
-    char *name = new char[MAX_NAME_LENGTH];
+    char name[MAX_NAME_LENGTH];
     unsigned amount;
     date min_expire(m_products[0].expire());
     date nullDate;
     place nullPlace;
+    std::cin.clear();
+    std::cin.ignore(10000,'\n');
     std::cout << "Enter name of product to eject: ";
     std::cin.getline(name, MAX_NAME_LENGTH);
     std::cout << "Enter amount to eject: ";
     std::cin >> amount;
     for (size_t i = 0; i < m_size; i++)
     {
+
         if(strcmp(m_products[i].name(), name) == 0)
         {
             count++;
@@ -197,29 +200,24 @@ void warehouse::eject()
                     std::cin >> c;
                     if(c=='y')
                     {
-                        m_products[i].~Product();
-                        m_products[i].setExpire(nullDate);
-                        m_products[i].setEntry(nullDate);
-                        m_products[i].setLocation(nullPlace);
-                        m_products[i].setAmount(0);
+                        SwapProducts(m_products[i], m_products[m_size]);
+                        m_size--;
                     }
                     else
                         m_products[i].setAmount(m_products[i].amount() - amount);
                 }
+                else m_products[i].setAmount(m_products[i].amount() - amount);
             }
     }
     
 }
-
-/* std::ostream& writeWarehouse(std::ostream &out,const warehouse &w)
+warehouse& warehouse::readProducts(std::istream &in)
 {
-    return out.write(reinterpret_cast<const char *>(&w), sizeof(warehouse));
-} */
-
-/* void Write(std::ostream& out)
-{
-    for (size_t i = 0; i < m_size; i++)
+    unsigned count{0};
+    Product temp;
+    while (in)
     {
-        m_products[i].writeProduct(out, m_products[i]);
+        temp = readProduct(in);
+        push_back(temp);
     }
-} */
+}
