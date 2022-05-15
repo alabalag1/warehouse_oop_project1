@@ -20,14 +20,18 @@ public:
     place(unsigned section, unsigned shelf, unsigned number);
 
 
-    /// selectors
+    /// selector
     unsigned section() const { return m_section; };
+    /// selector
     unsigned shelf() const { return m_shelf; };
+    /// selector
     unsigned number() const { return m_number; };
 
-    ///mutators
+    ///mutator
     void setSection(unsigned section) { m_section = section; };
+    ///mutator
     void setShelf(unsigned shelf) { m_shelf = shelf; };
+    ///mutator
     void setNumber(unsigned number) { m_number = number; };
 
     ///operator=

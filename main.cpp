@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
     date data;
     place location;
     Product test("asdf", data, data, "az", 20, location, "ne");
-    std::fstream file("testy.bin", ios::in | ios::out | ios::binary);
+    std::fstream file("testy.bin", ios::binary | ios::in | ios::out  | ios::trunc);
     unsigned count{0};
     while (a != 0)
     {
@@ -56,7 +56,10 @@ int main(int argc, char const *argv[])
                 else if(a==3)
                     ware.eject();
                     else if(a==4)
+                    {
+                        file.seekg(0);
                         ware.readProducts(file);
+                    }
     }
     file.close();
     return 0;

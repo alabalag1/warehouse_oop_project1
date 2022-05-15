@@ -22,55 +22,59 @@ private:
     char m_comment[MAX_COMMENT_LENGTH];
 
 public:
-    // Default constructor
+    /// Default constructor
     Product();
 
-    // Constructor with all parameters
+    /// Constructor with all parameters
     Product(char *name, date expire, date entry, char *manufacter, unsigned amount, place location, char *comment);
 
-    // Destructor
+    /// Destructor
     ~Product();
 
-    // opreator=
+    /// opreator=
     Product &operator=(const Product &);
 
-    // Print all available products
+    /// Print all available products
     void print();
 
-    // operator>>
-    //friend std::istream &operator>>(std::istream &is, Product &);
-
-    //Selectors
+    ///Selector
     char const* name() const { return m_name; };
+    ///Selector
     date expire() const { return m_expire; };
+    ///Selector
     date entry() const { return m_entry; };
+    ///Selector
     char const* manufacter() const { return m_manufacter; };
+    ///Selector
     unsigned amount() const { return m_amount; };
+    ///Selector
     place location() const { return m_location; };
+    ///Selector
     char const* comment() const { return m_comment; };
 
-    //Mutators
+    ///Mutator
     void setName(char const*);
+    ///Mutator
     void setExpire(date);
+    ///Mutator
     void setEntry(date);
+    ///Mutator
     void setManufacter(char const*);
+    ///Mutator
     void setAmount(unsigned);
+    ///Mutator
     void setLocation(place);
+    ///Mutator
     void setComment(char const*);
     
-    //swap
+    ///swap
     friend void SwapProducts(Product &, Product &);
 
-    //operator<<
+    ///operator<<
     friend std::ostream &operator<<(std ::ostream &, const Product &);
-
-    //operator>>
-    //friend std::istream &operator>>(std::istream &, Product &);
-
-    void write(std::fstream &) const;
-    void read(std::fstream &);
 };
 
+///Reading from file
 Product readProduct(std::istream &);
 
 #endif

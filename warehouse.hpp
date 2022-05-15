@@ -18,44 +18,45 @@ private:
     void expand(size_t);
 
 public:
-    //Default Constructor
+    ///Default Constructor
     warehouse() = default;
 
-    //Constructor
+    ///Constructor
     explicit warehouse(size_t);
 
-    //Copy Constructor
+    ///Copy Constructor
     warehouse(const warehouse&);
 
-    //operator=
+    ///operator=
     warehouse &operator=(const warehouse &);
 
-    //Destructor
+    ///Destructor
     ~warehouse();
 
-    //Print
+    ///Print
     void print() const;
 
-    //Selectors
+    ///Selector
     Product *products() { return m_products; };
+    ///Selector
     size_t size() { return m_size; };
 
-    //Push to back
+    ///Push to back
     void push_back(Product&);
 
-    //Swap
+    ///Swap
     void swap(warehouse&);
 
-    //Add product in dialogue mode
+    ///Add product in dialogue mode
     void add();
 
-    //Eject product in dialogue mode
+    ///Eject product in dialogue mode
     void eject();
 
-    //Write
-    //std::ostream &writeWarehouse(std::ostream &, const warehouse &);
+    ///Write
     void Write(std::ostream&);
-
+    
+    ///Reading from file
     warehouse &readProducts(std::istream &in);
 };
 

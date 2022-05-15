@@ -11,43 +11,47 @@ private:
     unsigned m_day;
 
 public:
-    //default constructor
+    ///default constructor
     date();
-    //constructor with 3 parameters
+    ///constructor with 3 parameters
     date(unsigned year, unsigned month, unsigned day);
-    //copy constructor
+    ///copy constructor
     date(const date &);
     
-    //selectors
+    ///selector
     unsigned year() const { return m_year; };
+    ///selector
     unsigned month() const { return m_month; };
+    ///selector
     unsigned day() const { return m_day; };
 
-    //mutators
+    ///mutator
     void setYear(unsigned year) { m_year = year; };
+    ///mutator
     void setMonth(unsigned month) { m_month = month; };
+    ///mutator
     void setDay(unsigned day) { m_day = day; };
 
-    //input operator overload
+    ///input operator overload
     friend std::istream &operator>>(std::istream&, date&);
 
-    //operator= overload
+    ///operator= overload
     date &operator=(const date &);
 };
 
-//output operator overload
+///output operator overload
 std::ostream &operator<<(std::ostream&, const date&);
 
-//operator<
+///operator<
 bool operator<(const date &, const date &);
 
-//operator<=
+///operator<=
 bool operator<=(const date &, const date &);
 
-//operator!=
+///operator!=
 bool operator!=(const date &, const date &);
 
-//operator ==
+///operator ==
 bool operator==(const date &, const date &);
 
 #endif
