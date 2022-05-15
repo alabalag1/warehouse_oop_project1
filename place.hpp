@@ -13,38 +13,38 @@ private:
     unsigned m_number;
 
 public:
-    //Default constructor
+    ///Default constructor
     place();
 
-    //constructor with 3 parameters
+    ///constructor with 3 parameters
     place(unsigned section, unsigned shelf, unsigned number);
 
 
-    // selectors
+    /// selectors
     unsigned section() const { return m_section; };
     unsigned shelf() const { return m_shelf; };
     unsigned number() const { return m_number; };
 
-    //mutators
+    ///mutators
     void setSection(unsigned section) { m_section = section; };
     void setShelf(unsigned shelf) { m_shelf = shelf; };
     void setNumber(unsigned number) { m_number = number; };
 
-    //operator=
+    ///operator=
     place &operator=(const place &);
 
-    //operator>>
+    ///operator>>
     friend std::istream &operator>>(std::istream &, place&);
 
 };
 
-//operator<<
+///operator<<
 std::ostream &operator<<(std::ostream &, const place&);
 
-//operator!=
+///operator!=
 bool operator!=(const place &,const place &);
 
-//operator==
+///operator==
 bool operator==(const place &, const place &);
 
 #endif
