@@ -46,9 +46,18 @@ public:
     place location() { return m_location; };
     char *comment() { return m_comment; };
 
+    //Mutators
+    void setName(char*);
+    void setExpire(date);
+    void setEntry(date);
+    void setManufacter(char*);
+    void setAmount(unsigned);
+    void setLocation(place);
+    void setComment(char*);
+    
+    //operator<<
     friend std::ostream &operator<<(std ::ostream &, const Product &);
 };
 
-//operator<
 
 #endif
