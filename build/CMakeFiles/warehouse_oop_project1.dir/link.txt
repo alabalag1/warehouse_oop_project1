@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/warehouse_oop_project1.dir/main.cpp.o CMakeFiles/warehouse_oop_project1.dir/date.cpp.o CMakeFiles/warehouse_oop_project1.dir/place.cpp.o CMakeFiles/warehouse_oop_project1.dir/product.cpp.o CMakeFiles/warehouse_oop_project1.dir/warehouse.cpp.o -o warehouse_oop_project1 

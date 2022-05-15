@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/krastev/c++/warehouse_oop_project1/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/warehouse_oop_project1.dir/main.cpp.o -c /home/krastev/c++/warehouse_oop_project1/main.cpp",
+  "file": "/home/krastev/c++/warehouse_oop_project1/main.cpp"
+},
+{
+  "directory": "/home/krastev/c++/warehouse_oop_project1/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/warehouse_oop_project1.dir/date.cpp.o -c /home/krastev/c++/warehouse_oop_project1/date.cpp",
+  "file": "/home/krastev/c++/warehouse_oop_project1/date.cpp"
+},
+{
+  "directory": "/home/krastev/c++/warehouse_oop_project1/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/warehouse_oop_project1.dir/place.cpp.o -c /home/krastev/c++/warehouse_oop_project1/place.cpp",
+  "file": "/home/krastev/c++/warehouse_oop_project1/place.cpp"
+},
+{
+  "directory": "/home/krastev/c++/warehouse_oop_project1/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/warehouse_oop_project1.dir/product.cpp.o -c /home/krastev/c++/warehouse_oop_project1/product.cpp",
+  "file": "/home/krastev/c++/warehouse_oop_project1/product.cpp"
+},
+{
+  "directory": "/home/krastev/c++/warehouse_oop_project1/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/warehouse_oop_project1.dir/warehouse.cpp.o -c /home/krastev/c++/warehouse_oop_project1/warehouse.cpp",
+  "file": "/home/krastev/c++/warehouse_oop_project1/warehouse.cpp"
+}
+]
